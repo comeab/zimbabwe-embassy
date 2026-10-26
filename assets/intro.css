@@ -1,0 +1,120 @@
+/* Welcome intro: "One embassy, four countries". Used by welcome.html (as a stage) and index.html (as a full-screen overlay). */
+.zi {
+  position: relative; overflow: hidden; isolation: isolate; color: #fff;
+  container: zi / inline-size;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: radial-gradient(110% 100% at 68% 38%, #0c3b25 0%, #041a0f 72%);
+  --zi-gold: #f2b705; --zi-gold-2: #f7c934; --zi-ink: #13201a; --zi-ink-3: #66716b;
+  --zi-serif: "Source Serif 4", Georgia, serif; --zi-hand: "Caveat", "Segoe Script", cursive;
+}
+.zi.zi-glass { background: radial-gradient(110% 100% at 68% 38%, rgba(12,59,37,.82) 0%, rgba(4,26,15,.88) 72%); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.zi * { box-sizing: border-box; }
+/* The map alone, inside the homepage hero: no background of its own, softer land */
+.zi.zi-still { background: none; }
+.zi.zi-still .zi-land { fill: rgba(20,70,48,.55); stroke: rgba(4,26,15,.6); }
+.zi.zi-still .zi-chip { padding: .3em .6em; font-weight: 500; }
+.zi.zi-still .zi-chip b { display: inline; font-size: 1.15em; margin-right: .35em; }
+/* The Embassy's pin: its tip on Stockholm, where the thread lands */
+.zi-pin { position: absolute; width: 18px; height: 24px; margin: -23px 0 0 -9px; z-index: 5; filter: drop-shadow(0 2px 3px rgba(0,0,0,.45)); }
+.zi-pin svg { display: block; width: 100%; height: 100%; }
+.zi-pin path { fill: #146b43; stroke: #f7f3e8; stroke-width: 1.6; }
+.zi-pin circle { fill: var(--zi-gold); }
+.zi.zi-snap, .zi.zi-snap * { transition: none !important; }
+.zi .zi-t { opacity: 0; transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.zi .zi-t.zi-in { opacity: 1; transform: none; }
+
+.zi-skip { position: absolute; top: max(14px, 2.4cqw); right: max(14px, 2.4cqw); z-index: 20; font: inherit; font-size: max(12px, 1.05cqw); font-weight: 600; color: #fff; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.28); border-radius: 999px; padding: .5em 1.1em; cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.zi-skip:hover { background: rgba(255,255,255,.2); }
+.zi-skip:focus-visible { outline: 3px solid var(--zi-gold); outline-offset: 2px; }
+
+.zi-map { position: absolute; inset: 0; width: 100%; height: 100%; }
+.zi-land { fill: #0f3626; stroke: #072116; stroke-width: .7; }
+.zi.zi-glass .zi-land { fill: rgba(20,70,48,.55); }
+.zi-nordic { fill: #1c4d36; stroke: rgba(255,255,255,.3); stroke-width: 1; }
+.zi-fill { opacity: 0; transition: opacity .9s ease; }
+.zi-fill.zi-in { opacity: 1; }
+.zi-outline { fill: none; stroke: #fff; stroke-width: 1.3; opacity: 0; transition: opacity .9s ease; }
+.zi-outline.zi-in { opacity: .9; }
+.zi-inset { fill: rgba(4,26,15,.8); stroke: rgba(242,183,5,.55); stroke-width: 1; stroke-dasharray: 4 4; opacity: 0; transition: opacity .6s; }
+.zi-zw { opacity: 0; transition: opacity .8s ease; stroke: #fff; stroke-width: 1; }
+.zi-inset.zi-in, .zi-zw.zi-in { opacity: 1; }
+.zi-stitch { fill: none; stroke-width: 2.6; stroke-dasharray: 9 6; stroke-linecap: round; }
+
+.zi-labels { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.zi-chip { position: absolute; transform: translate(-50%, -50%) scale(.92); font-size: max(10px, .95cqw); line-height: 1.2; text-align: center; white-space: nowrap; background: rgba(4,26,15,.88); border: 1px solid rgba(255,255,255,.2); padding: .35em .75em; border-radius: .5em; }
+.zi-chip.zi-t.zi-in { transform: translate(-50%, -50%); }
+.zi-chip.zi-right { transform: translate(14px, -50%) scale(.92); text-align: left; }
+.zi-chip.zi-right.zi-t.zi-in { transform: translate(14px, -50%); }
+.zi-chip.zi-left { transform: translate(calc(-100% - 14px), -50%) scale(.92); text-align: right; }
+.zi-chip.zi-left.zi-t.zi-in { transform: translate(calc(-100% - 14px), -50%); }
+.zi-chip.zi-above { transform: translate(-50%, calc(-100% - 12px)) scale(.92); }
+.zi-chip.zi-above.zi-t.zi-in { transform: translate(-50%, calc(-100% - 12px)); }
+.zi-chip b { display: block; font-family: var(--zi-serif); font-size: 1.3em; font-weight: 600; color: var(--zi-gold-2); }
+.zi-chip img { display: inline-block; width: 1.35em; height: .95em; object-fit: cover; border-radius: 2px; vertical-align: -.1em; margin-right: .4em; box-shadow: 0 0 0 1px rgba(255,255,255,.35); }
+.zi-inset-label { position: absolute; font-size: max(10px, .9cqw); line-height: 1.25; color: #cfe0d6; }
+.zi-inset-label b { display: block; font-family: var(--zi-serif); font-size: 1.45em; font-weight: 600; color: #fff; }
+.zi-dot { position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 4px rgba(255,255,255,.18); opacity: 0; transition: opacity .4s; }
+.zi-dot.zi-gold { background: var(--zi-gold); box-shadow: 0 0 0 5px rgba(242,183,5,.3); }
+.zi-dot.zi-in { opacity: 1; }
+.zi-dot.zi-in::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(255,255,255,.7); animation: zi-ping 1.6s ease-out 2; }
+@keyframes zi-ping { from { transform: scale(.6); opacity: 1; } to { transform: scale(3.2); opacity: 0; } }
+
+.zi-text { position: absolute; left: 4cqw; top: max(18px, 4.5cqw); width: 30cqw; z-index: 5; }
+.zi-eyebrow { font-size: max(11px, 1.05cqw); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--zi-gold-2); }
+.zi-story { transition: opacity .3s ease, transform .3s ease; }
+.zi-story.zi-out { opacity: 0; transform: translateY(.8cqw); }
+.zi-story.zi-gone { opacity: 0; transform: translateY(-1cqw); transition-duration: .5s; }
+.zi-year { font-family: var(--zi-serif); font-size: max(40px, 7.4cqw); font-weight: 600; line-height: 1; margin-top: 1.4cqw; font-variant-numeric: tabular-nums; }
+.zi-year.zi-year-word { font-size: max(32px, 4.6cqw); }
+.zi-date { font-size: max(12px, 1.3cqw); font-weight: 600; color: #a9c9b8; margin-top: .9cqw; }
+.zi-line { font-family: var(--zi-serif); font-size: max(15px, 1.85cqw); line-height: 1.38; margin: 1.3cqw 0 0; color: #f3f7f4; }
+.zi-ph { display: inline-block; border: 1px dashed var(--zi-gold-2); color: var(--zi-gold-2); border-radius: .2em; padding: 0 .2em; line-height: 1.1; }
+.zi-ph.zi-sm { font-size: .95em; padding: .05em .45em; }
+
+.zi-card { position: absolute; left: 4cqw; top: max(18px, 4.5cqw); width: 30cqw; z-index: 6; background: #faf8f4; color: var(--zi-ink); border-radius: 1.4cqw; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,.65); transform: translateY(2cqw); }
+.zi-card .zi-photo { position: relative; aspect-ratio: 16 / 10; }
+.zi-card .zi-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.zi-card .zi-photo::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: max(4px, .45cqw); background: linear-gradient(90deg, #146b43 0 25%, #f2b705 25% 50%, #c8102e 50% 75%, #13201a 75%); }
+.zi-card .zi-tx { padding: 1.3cqw 1.9cqw 1.8cqw; }
+.zi-hand { width: 100%; height: 4.6cqw; min-height: 34px; overflow: visible; display: block; }
+/* "Welcome" in the Embassy's green, there from the start */
+.zi-hand text { font-family: var(--zi-hand); font-size: 96px; font-weight: 600; fill: #0d5132; }
+.zi-langs { font-size: max(10px, 1cqw); font-weight: 600; letter-spacing: .04em; color: var(--zi-ink-3); margin: .3cqw 0 0; }
+.zi-langs span { color: var(--zi-gold); }
+.zi-sign { margin-top: 1.1cqw; }
+.zi-sign strong { font-family: var(--zi-serif); font-size: max(13px, 1.3cqw); display: block; line-height: 1.25; }
+.zi-sign small { font-size: max(10px, .95cqw); color: var(--zi-ink-3); }
+
+.zi-timeline { position: absolute; left: 4cqw; right: 4cqw; bottom: max(10px, 2.6cqw); z-index: 5; }
+.zi-track { position: relative; height: 2px; background: rgba(255,255,255,.18); }
+.zi-fillbar { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--zi-gold); transition: width .9s ease; }
+.zi-nodes { list-style: none; margin: 0; padding: 0; position: relative; height: max(34px, 3.6cqw); }
+.zi-nodes li { position: absolute; top: 0; transform: translateX(-50%); text-align: center; white-space: nowrap; font-size: max(10px, .95cqw); line-height: 1.25; color: rgba(255,255,255,.45); padding-top: max(10px, 1.1cqw); transition: color .4s; }
+.zi-nodes li::before { content: ""; position: absolute; left: 50%; top: 0; width: 11px; height: 11px; border-radius: 50%; transform: translate(-50%, -50%); margin-top: -1px; background: #0b2a1c; border: 2px solid rgba(255,255,255,.35); transition: background .4s, border-color .4s; }
+.zi-nodes li b { display: block; font-weight: 700; }
+.zi-nodes li.zi-done { color: #fff; }
+.zi-nodes li.zi-done::before { background: var(--zi-gold); border-color: var(--zi-gold); }
+.zi-nodes li.zi-phnode b { border-bottom: 1px dashed var(--zi-gold-2); }
+
+/* Phones and other tall frames: map on top, story below. Vertical positions use % of the frame height. */
+@container zi (max-width: 640px) {
+  .zi-text { left: 5cqw; right: 5cqw; width: auto; top: 57%; }
+  .zi-eyebrow { display: none; }
+  .zi-year { font-size: 12cqw; margin-top: 0; }
+  .zi-year.zi-year-word { font-size: 9cqw; }
+  .zi-date { font-size: 3.4cqw; }
+  .zi-line { font-size: 4.3cqw; margin-top: 1.6cqw; }
+  .zi-card { left: 5cqw; right: 5cqw; width: auto; top: auto; bottom: calc(max(10px, 2.6cqw) + 14cqw); border-radius: 3cqw; }
+  .zi-card .zi-tx { padding: 3cqw 4.5cqw 4cqw; }
+  .zi-hand { height: 10cqw; }
+  .zi-langs { font-size: 2.7cqw; }
+  .zi-sign strong { font-size: 3.8cqw; }
+  .zi-sign small { font-size: 2.9cqw; }
+  .zi-nodes li { font-size: 2.8cqw; }
+  .zi-nodes li span { display: none; }
+  .zi-chip { font-size: 2.5cqw; }
+  .zi-inset-label { font-size: 2.4cqw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zi *, .zi *::before, .zi *::after { transition: none !important; animation: none !important; }
+}

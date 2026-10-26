@@ -1,0 +1,1 @@
+import{i as e,n as t,o as n,r,s as i}from"./hours.DuxmH3vW.js";var a=i(),o=t(),s=e(o,a);document.querySelectorAll(`[data-status-dot]`).forEach(e=>e.classList.toggle(`open`,s)),document.querySelectorAll(`[data-status-text]`).forEach(e=>{e.textContent=s?`Embassy open now · closes ${r(o[a.day][1])}`:`Embassy closed · opens ${n(o,a)}`});
